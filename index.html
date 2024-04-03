@@ -5,18 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Tareas</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
-        <h1>Gestión de Tareas</h1>
-        <div class="input-container">
-            <input type="text" id="taskInput" placeholder="Agregar nueva tarea">
-            <input type="text" id="senderInput" placeholder="Tu nombre y apellido">
-            <button onclick="addTask()">+</button>
+        <div class="form-container">
+            <h1>Gestión de Tareas</h1>
+            <form id="taskForm" enctype="multipart/form-data">
+                <div class="input-container">
+                    <input type="text" id="nameInput" placeholder="Nombre" class="large-input">
+                </div>
+                <div class="input-container">
+                    <input type="text" id="lastNameInput" placeholder="Apellido" class="large-input">
+                </div>
+                <div class="input-container">
+                    <input type="text" id="matriculaInput" placeholder="Matrícula" class="large-input">
+                </div>
+                <div class="input-container">
+                    <input type="date" id="dateInput" class="large-input">
+                </div>
+                <div class="input-container">
+                    <textarea id="taskInput" rows="8" placeholder="Tarea" class="large-input"></textarea>
+                </div>
+                <div class="input-container">
+                    <input type="file" id="fileInput" class="large-input">
+                </div>
+                <div class="input-container">
+                    <button type="submit" class="insert-button">Insertar</button>
+                </div>
+            </form>
         </div>
         <ul id="taskList"></ul>
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>
