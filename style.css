@@ -1,8 +1,6 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-color: #8f2626; 
   margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,96 +8,23 @@ body {
 }
 
 .container {
-  text-align: center;
-}
-
-.form-container {
-  background-color: #f9f9f9;
+  background-color: white;
+  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  padding: 40px;
-  max-width: 600px;
-  width: 100%;
-}
-
-h1 {
-  color: #333;
-  margin-bottom: 30px;
-}
-
-.input-container {
-  margin-bottom: 20px;
-}
-
-.large-input {
-  width: calc(100% - 30px);
-  padding: 15px;
-  border: none;
-  border-radius: 10px;
-  outline: none;
-  box-sizing: border-box;
-}
-
-.input-container input[type="date"],
-.input-container textarea,
-.input-container button,
-.input-container input[type="file"] {
-  width: calc(100% - 30px);
-  padding: 15px;
-  border: none;
-  border-radius: 10px;
-  outline: none;
-  box-sizing: border-box;
-}
-
-.input-container input[type="date"],
-.input-container textarea {
-  margin-bottom: 20px;
-}
-
-.input-container button {
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.input-container button:hover {
-  background-color: #0056b3;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 30px;
-}
-
-li {
-  background-color: #f9f9f9;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center; 
 }
 
-.completed {
-  text-decoration: line-through;
-  color: #999;
-}
-
-.delete-button {
-  background-color: #f44336;
+button {
+  background-color: #3498db; 
   color: white;
+  padding: 10px 20px;
   border: none;
-  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s; 
 }
 
-.delete-button:hover {
-  background-color: #d32f2f;
+button:hover {
+  background-color: #2980b9; 
 }
