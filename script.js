@@ -1,29 +1,42 @@
 let tasks = [];
 
-function addTask() {
+function addTask(event) {
+    event.preventDefault();
+
+    const nameInput = document.getElementById('nameInput');
+    const lastNameInput = document.getElementById('lastNameInput');
+    const matriculaInput = document.getElementById('matriculaInput');
+    const dateInput = document.getElementById('dateInput');
     const taskInput = document.getElementById('taskInput');
-    const senderInput = document.getElementById('senderInput');
-    const taskText = taskInput.value.trim();
-    const senderName = senderInput.value.trim();
-    
-    if (taskText !== '' && senderName !== '') {
-        tasks.push({ text: taskText, sender: senderName, completed: false });
+    const fileInput = document.getElementById('fileInput');
+
+    const name = nameInput.value.trim();
+    const lastName = lastNameInput.value.trim();
+    const matricula = matriculaInput.value.trim();
+    const date = dateInput.value.trim();
+    const task = taskInput.value.trim();
+    const file = fileInput.files[0];
+
+    if (name !== '' && lastName !== '' && matricula !== '' && date !== '' && task !== '') {
+        const newTask = {
+            name: name,
+            lastName: lastName,
+            matricula: matricula,
+            date: date,
+            task: task,
+            file: file
+        };
+        tasks.push(newTask);
         renderTasks();
+        nameInput.value = '';
+        lastNameInput.value = '';
+        matriculaInput.value = '';
+        dateInput.value = '';
         taskInput.value = '';
-        senderInput.value = '';
+        fileInput.value = '';
     } else {
-        alert('Por favor, ingresa una tarea válida y tu nombre y apellido.');
+        alert('Por favor, completa todos los campos del formulario.');
     }
-}
-
-function toggleTask(index) {
-    tasks[index].completed = !tasks[index].completed;
-    renderTasks();
-}
-
-function deleteTask(index) {
-    tasks.splice(index, 1);
-    renderTasks();
 }
 
 function renderTasks() {
@@ -32,23 +45,37 @@ function renderTasks() {
     
     tasks.forEach((task, index) => {
         const li = document.createElement('li');
-        li.innerHTML = `<span>${task.text}</span> <span>(${task.sender})</span>`;
-        
-        if (task.completed) {
-            li.classList.add('completed');
+        li.innerHTML = `
+            <div>
+                <p><strong>Nombre:</strong> ${task.name}</p>
+                <p><strong>Apellido:</strong> ${task.lastName}</p>
+                <p><strong>Matrícula:</strong> ${task.matricula}</p>
+                <p><strong>Fecha de entrega:</strong> ${task.date}</p>
+                <p><strong>Tarea:</strong> ${task.task}</p>
+            </div>
+        `;
+
+        if (task.file) {
+            const fileLink = document.createElement('a');
+            fileLink.href = URL.createObjectURL(task.file);
+            fileLink.textContent = 'Ver archivo';
+            fileLink.target = '_blank';
+            li.appendChild(fileLink);
         }
-        
-        li.addEventListener('click', () => toggleTask(index));
-        
+
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Eliminar';
         deleteButton.classList.add('delete-button');
-        deleteButton.addEventListener('click', (event) => {
-            event.stopPropagation();
-            deleteTask(index);
-        });
-        
+        deleteButton.addEventListener('click', () => deleteTask(index));
         li.appendChild(deleteButton);
+
         taskList.appendChild(li);
     });
 }
+
+function deleteTask(index) {
+    tasks.splice(index, 1);
+    renderTasks();
+}
+
+document.getElementById('taskForm').addEventListener('submit', addTask);
